@@ -21,4 +21,31 @@
 // for 23 bit network address , netmask is 255.255.254.0
 // for 22 bit network address , netmask is 255.255.252.0
 
+// the type IP is defines as an array of Bytes 
+
+package main 
+
+import (
+	"fmt"
+	"net"
+	"os"
+)
+
+func main() {
+	if len(os.Args) != 2{
+		fmt.Println(os.Stderr, "Usage: %s ip-addr\n", os.Args[0])
+	}
+	name := os.Args[1]
+	fmt.Println(name)
+
+	addr := net.ParseIP(name)
+	fmt.Println(addr)
+
+	if addr == nil {
+		fmt.Println("Invalid address")
+	}else{
+		fmt.Println("The address is ", addr.String())
+	}
+	os.Exit(0)
+}
 
