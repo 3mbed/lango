@@ -14,6 +14,8 @@ import (
 // Another special case is often used for servers, where the host address is zero, so that the TCP
 // address is really just the port name, as in :80 for an HTTP server.
 
+//usage : go run daytimeserver.go
+
 func main(){
 
 	servicePort := ":1200"
