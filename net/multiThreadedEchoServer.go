@@ -18,6 +18,9 @@ func checkError(err error){
 // we create a function which reads the received bytes and replies the same 
 
 func handleClient(conn net.Conn){
+	// close the connection on exit
+	defer conn.Close()
+
 	var buf [512]byte
 	// the following infinite loop is a imp pattern
 	// possibly it breaks when no more bytes is left 
@@ -36,11 +39,6 @@ func handleClient(conn net.Conn){
 	}
 }
 
-// usage : go run simpleEchoServer.go
-// another terminal $ telnet 127.0.0.1 1201
-//                  $ hello 
-//                  Enter
-
 func main(){
 
 	// we resolve our service and get the tcpAddr 
@@ -58,7 +56,6 @@ func main(){
 		if err != nil {
 			continue // there is some error so continue listening for next connection
 		}
-		handleClient(conn)
-		conn.Close() // we are finished 
+		go handleClient(conn)
 	}
 }
