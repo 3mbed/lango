@@ -25,6 +25,8 @@ func main(){
 		fmt.Println("Error")
 		os.Exit(1)
 	}
+	fmt.Println(os.Args[1])
+
 	service := os.Args[1]
 
 	targetTcpAddr, err := net.ResolveTCPAddr("tcp4", service)
