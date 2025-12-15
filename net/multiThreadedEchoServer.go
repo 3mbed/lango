@@ -1,3 +1,10 @@
+// usage 
+
+// $ go run multiThreadedEchoServer.go
+// another terminal 
+// $ telnet 127.0.0.1 1201
+// hello + Enter
+
 package main
 
 import (
